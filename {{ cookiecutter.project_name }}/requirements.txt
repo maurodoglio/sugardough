@@ -109,3 +109,10 @@ django-jinja==1.4.1
 
 # sha256: RORjnsBXprap3duGnU46SBj8knjsSQzOOa7whEBZKpM
 django-session-csrf==0.5
+
+# sha256: nQ-cEz2G_JTiRTxceRkbRiDdOGVQx80Nu1m6vG3sD8k
+django-redis-cache==1.6.4
+
+# sha256: lxVrN9fNpOfYZYvhFIyYOYThqXUJC6RYzH4kQCUZHb0
+# sha256: Xfuuas_FTt8KekFbmeCyHAo8J6f3h7KS7qcnsfrMVTM
+redis==2.10.5

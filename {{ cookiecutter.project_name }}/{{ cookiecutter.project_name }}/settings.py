@@ -9,6 +9,10 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 import os
+try:
+    import urlparse as parse
+except:
+    from urllib import parse
 
 import dj_database_url
 from decouple import Csv, config
@@ -77,6 +81,24 @@ DATABASES = {
         cast=dj_database_url.parse
     )
 }
+
+# cache
+# https://docs.djangoproject.com/en/1.7/ref/settings/#caches
+redis_url = config(
+    'REDIS_URL',
+    cast=parse.urlparse
+)
+CACHES = {
+    "default": {
+        "BACKEND": "redis_cache.RedisCache",
+        "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
+        "OPTIONS": {
+            "PASSWORD": redis_url.password,
+            "DB": 0,
+        }
+    }
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

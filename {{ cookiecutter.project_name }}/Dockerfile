@@ -28,6 +28,6 @@ COPY requirements.txt /app/requirements.txt
 RUN ./bin/peep.py install -r requirements.txt
 
 COPY . /app
-RUN DEBUG=False SECRET_KEY=foo ALLOWED_HOSTS=localhost, DATABASE_URL= ./manage.py collectstatic --noinput -c
+RUN DEBUG=False SECRET_KEY=foo ALLOWED_HOSTS=localhost, DATABASE_URL=, REDIS_URL= ./manage.py collectstatic --noinput -c
 RUN chown webdev.webdev -R .
 USER webdev
